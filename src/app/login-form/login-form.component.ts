@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthMgrService } from '../auth-mgr.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  loggedInUser;
+  isLoggedIn;
+
+  constructor(private authMgr: AuthMgrService) { }
 
   ngOnInit(): void {
+    this.authMgr.authService.authState.subscribe( (usr) => {
+        this.isLoggedIn = (usr != null);
+        this.loggedInUser = usr;
+    })
+  }
+
+  signWithGoogle() {
+    this.authMgr.signInWithGoogle();
   }
 
 }

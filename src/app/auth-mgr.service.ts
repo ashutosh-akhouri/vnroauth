@@ -9,7 +9,6 @@ export class AuthMgrService {
 
   loggedInUser;
 
-
   constructor(public authService: SocialAuthService) { }
 
   signInWithGoogle(): void {

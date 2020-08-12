@@ -14,11 +14,14 @@ export class NavComponent implements OnInit {
   constructor(private authMgr: AuthMgrService) { }
 
   ngOnInit(): void {
-    this.authMgr.authService.authState.subscribe( (usr) => {
+    this.authMgr.authService.authState.subscribe((usr) => {
       this.isLoggedIn = (usr != null);
       this.loggedInUser = usr;
-  })
+    })
+  }
 
+  so(){
+    this.authMgr.signOut();
   }
 
 }

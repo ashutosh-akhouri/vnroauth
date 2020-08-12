@@ -5,9 +5,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-            <a class="nav-link" routerLink="login">Login</a>
-            <a class="nav-link" routerLink="">Register</a>
-            <a class="nav-link" routerLink="">UserName</a>
+            <a *ngIf="!isLoggedIn" class="nav-link" routerLink="login">Login</a>
+            <a *ngIf="!isLoggedIn" class="nav-link" routerLink="">Register</a>
+            <a *ngIf="isLoggedIn" class="nav-link" routerLink="">{{loggedInUser.firstName}}</a>
         </div>
     </div>
 </nav>

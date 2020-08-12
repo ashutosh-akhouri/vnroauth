@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthMgrService } from '../auth-mgr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,17 +12,14 @@ export class LoginFormComponent implements OnInit {
   loggedInUser;
   isLoggedIn;
 
-  constructor(private authMgr: AuthMgrService) { }
+  constructor(private authMgr: AuthMgrService, private rtr: Router) { }
 
   ngOnInit(): void {
-    this.authMgr.authService.authState.subscribe( (usr) => {
-        this.isLoggedIn = (usr != null);
-        this.loggedInUser = usr;
-    })
   }
 
   signWithGoogle() {
     this.authMgr.signInWithGoogle();
+    this.rtr.navigateByUrl("/");
   }
 
 }
